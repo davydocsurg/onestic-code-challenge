@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Store 001",
+    "location": "Spain"
+  },
+  {
+    "id": 2,
+    "name": "Store 002",
+    "location": "Spain"
+  },
+  {
+    "id": 3,
+    "name": "Store 003",
+    "location": "Spain"
+  },
+  {
+    "id": 4,
+    "name": "Store 004",
+    "location": "Spain"
+  },
+  {
+    "id": 5,
+    "name": "Store 005",
+    "location": "Spain"
+  }
+]

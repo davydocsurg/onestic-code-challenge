@@ -29,6 +29,19 @@ html, body {
   width: 100%;
 }
 
+// .pages__stores-list{
+//   display: flex;
+//   flex-direction: row;
+//   align-content: space-around;
+//   flex-wrap: wrap;
+//   justify-content: center;
+
+//   & .storelist{
+//     width: 200px;
+
+//   }
+// }
+
 @media (min-width: 1200px) {
   .page {
     max-width: var(--boxed-max-width);

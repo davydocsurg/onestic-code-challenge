@@ -1,0 +1,160 @@
+<template>
+  <div id="app">
+    <div class="columns is-multiline is-mobile">
+      <div class="column is-half" v-for="(p, index) in pageArr" :key="index">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img :src="p.image" alt="Placeholder image" />
+            </figure>
+          </div>
+          <div class="card-content">{{ p.description }}</div>
+        </div>
+      </div>
+    </div>
+    <v-page
+      :total-row="arr.length"
+      align="left"
+      v-model="current"
+      @page-change="pagePhotoChange"
+      :page-size-menu="[5, 10]"
+    ></v-page>
+    <!-- <ul
+      v-if="
+        Math.abs(pageNumber - currentPage) < 3 ||
+          pageNumber == totalPages - 1 ||
+          pageNumber == 0
+      "
+    >
+      <li v-for="pageNumber in totalPages" :key="pageNumber">
+        <a
+          href="#"
+          @click="setPage(pageNumber)"
+          :class="{
+            current: currentPage === pageNumber,
+            last:
+              pageNumber == totalPages - 1 &&
+              Math.abs(pageNumber - currentPage) > 3,
+            first: pageNumber == 0 && Math.abs(pageNumber - currentPage) > 3,
+          }"
+          >{{ pageNumber + 1 }}</a
+        >
+      </li>
+    </ul> -->
+  </div>
+</template>
+
+<script>
+  export default {
+    name: "App",
+    data() {
+      return {
+        pageArr: [],
+        current: 0,
+        arr: [
+          {
+            description: "Lady with a red umbrella",
+            image: "https://i.imgur.com/pwpWaWu.jpg",
+          },
+          {
+            description: "Flowers and some fruits",
+            image: "https://i.imgur.com/KIPtISY.jpg",
+          },
+          {
+            description: "Beautiful scenery",
+            image: "https://i.imgur.com/2jMCqQ2.jpg",
+          },
+          {
+            description: "Some kind of bird",
+            image: "https://i.imgur.com/QFDRuAh.jpg",
+          },
+          {
+            description: "The attack of dragons",
+            image: "https://i.imgur.com/8yIIokW.jpg",
+          },
+
+          //2nd page
+
+          {
+            description: "Lady with a red umbrella",
+            image: "https://i.imgur.com/pwpWaWu.jpg",
+          },
+          {
+            description: "Flowers and some fruits",
+            image: "https://i.imgur.com/KIPtISY.jpg",
+          },
+          {
+            description: "Beautiful scenery",
+            image: "https://i.imgur.com/2jMCqQ2.jpg",
+          },
+          {
+            description: "Some kind of bird",
+            image: "https://i.imgur.com/QFDRuAh.jpg",
+          },
+          {
+            description: "The attack of dragons",
+            image: "https://i.imgur.com/8yIIokW.jpg",
+          },
+
+          // 3rd page
+
+          {
+            description: "Lady with a red umbrella",
+            image: "https://i.imgur.com/pwpWaWu.jpg",
+          },
+          {
+            description: "Flowers and some fruits",
+            image: "https://i.imgur.com/KIPtISY.jpg",
+          },
+          {
+            description: "Beautiful scenery",
+            image: "https://i.imgur.com/2jMCqQ2.jpg",
+          },
+          {
+            description: "Some kind of bird",
+            image: "https://i.imgur.com/QFDRuAh.jpg",
+          },
+          {
+            description: "The attack of dragons",
+            image: "https://i.imgur.com/8yIIokW.jpg",
+          },
+        ],
+      };
+    },
+    methods: {
+      pagePhotoChange(pInfo) {
+        this.pageArr.splice(0, this.pageArr.length);
+        let start = 0,
+          end = 0;
+        start = pInfo.pageSize * (pInfo.pageNumber - 1);
+        end = start + pInfo.pageSize;
+        if (end > this.arr.length) end = this.arr.length;
+        for (let i = start; i < end; i++) {
+          this.pageArr.push(this.arr[i]);
+        }
+      },
+    },
+  };
+        //
+      totalPages: function() {
+        return Math.ceil(this.resultCount / this.itemsPerPage);
+      },
+    },
+
+    methods: {
+      // setPage: function(pageNumber) {
+      //   this.currentPage = pageNumber;
+      // },
+    },
+
+    filters: {
+      paginate: function(list) {
+        this.resultCount = list.length;
+        if (this.currentPage >= this.totalPages) {
+          this.currentPage = this.totalPages - 1;
+        }
+        var index = this.currentPage * this.itemsPerPage;
+        return list.slice(index, index + this.itemsPerPage);
+      },
+    },
+</script>
