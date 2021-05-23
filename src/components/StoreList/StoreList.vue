@@ -22,6 +22,7 @@
         v-for="store in filterStores"
         :key="store.id"
       />
+      <!-- :joke="store.joke" -->
     </div>
   </div>
 </template>
@@ -31,6 +32,7 @@
 <script>
   import Store from "@/components/Store/Store";
   import _ from "lodash";
+  import axios from "axios";
 
   export default {
     name: "StoreList",
@@ -43,6 +45,7 @@
         currentPage: 0,
         itemsPerPage: 2,
         resultCount: 0,
+        joke: "",
       };
     },
     props: {
@@ -51,10 +54,14 @@
         default: () => [],
       },
     },
+    mounted() {
+      this.fetchJokes;
+    },
     computed: {
       storesWithImages() {
         return _.map(this.stores, function(store) {
           store["image"] = "https://via.placeholder.com/300?text=" + store.name;
+          store["joke"] = "https://api.jokes.one/jod?category=knock-knock";
 
           return store;
         });
@@ -68,15 +75,18 @@
         return _.size(this.stores);
       },
     },
+    methods: {
+      fetchJokes() {
+        axios
+          .get("https://api.jokes.one/jod?category=knock-knock")
+          .then((res) => {
+            console.log(res);
+            this.joke = res.data;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+    },
   };
-  // return _.map(
-  //   this.stores,
-  //   ((store) => {
-  //     store["image"] =
-  //       "https://via.placeholder.com/300?text=" + store.name;
-  //     // return store;
-  //   }).filter((el) => {
-  //     return el.match(this.filterText);
-  //   })
-  // );
 </script>
