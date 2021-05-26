@@ -20,14 +20,14 @@
 
     data() {
       return {
-        currentTheme: localStorage.getItem("theme"),
+        // currentTheme: localStorage.getItem("theme"),
       };
     },
 
     computed: {
-      // currentTheme() {
-      //   return localStorage.getItem("theme");
-      // },
+      currentTheme() {
+        return localStorage.getItem("theme");
+      },
     },
   };
 </script>
