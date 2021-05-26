@@ -29,7 +29,7 @@
 </template>
 <style lang="scss">
   @import "./StoreList.scss";
-  // @import "bootstrap/scss/bootstrap.scss";
+  @import "bootstrap/scss/bootstrap.scss";
 </style>
 <script>
   // import "bootstrap/dist/css/bootstrap.css";
