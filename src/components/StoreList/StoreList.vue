@@ -46,10 +46,7 @@
     data() {
       return {
         filterText: "",
-        currentPage: 0,
-        itemsPerPage: 2,
-        resultCount: 0,
-        joke: "Joke of the day",
+        joke: "",
       };
     },
     props: {
@@ -59,13 +56,12 @@
       },
     },
     mounted() {
-      this.fetchJokes;
+      this.fetchJokes();
     },
     computed: {
       storesWithImages() {
         return _.map(this.stores, function(store) {
           store["image"] = "https://via.placeholder.com/300?text=" + store.name;
-          store["joke"] = "https://api.jokes.one/jod?category=knock-knock";
 
           return store;
         });
@@ -84,8 +80,8 @@
         axios
           .get("https://api.jokes.one/jod?category=knock-knock")
           .then((res) => {
-            console.log(res);
-            this.joke = res.data;
+            console.log(res.data.contents.jokes[0].joke.title);
+            this.joke = res.data.contents.jokes[0].joke.text;
           })
           .catch((err) => {
             console.log(err);

@@ -4,6 +4,7 @@
       <h2 class="store__title">{{ title }}</h2>
       <span class="store__location">{{ location }}</span>
       <img :src="photo" :alt="title" :title="title" />
+      <p class="store__joke py-2">{{ joke }}</p>
     </div>
   </div>
 </template>
