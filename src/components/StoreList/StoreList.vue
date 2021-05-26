@@ -4,7 +4,7 @@
       Here you can find all of our restaurants. We have {{ storesCount }} stores
       right now!
     </p>
-    <div class="form-group my-2">
+    <div class="form-group my-5">
       <label for="Filter Restaurants">Filter Restaurants</label>
       <input
         type="text"
@@ -13,12 +13,13 @@
         placeholder="Type to filter..."
       />
     </div>
-    <div class="row">
+    <div class="row pb-4">
       <Store
         class="store-list__item col-lg-3 col-md-4 col-sm-12"
         :title="store.name"
         :photo="store.image"
         :location="store.location"
+        :joke="joke"
         v-for="store in filterStores"
         :key="store.id"
       />
@@ -28,8 +29,11 @@
 </template>
 <style lang="scss">
   @import "./StoreList.scss";
+  // @import "bootstrap/scss/bootstrap.scss";
 </style>
 <script>
+  // import "bootstrap/dist/css/bootstrap.css";
+
   import Store from "@/components/Store/Store";
   import _ from "lodash";
   import axios from "axios";
@@ -45,7 +49,7 @@
         currentPage: 0,
         itemsPerPage: 2,
         resultCount: 0,
-        joke: "",
+        joke: "Joke of the day",
       };
     },
     props: {

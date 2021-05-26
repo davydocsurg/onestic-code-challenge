@@ -3,6 +3,7 @@ import VueRouter from "vue-router";
 import Home from "@/views/Home.vue";
 import Meals from "@/views/Meals.vue";
 import Restaurants from "@/views/Restaurants.vue";
+import Banner from "@/components/Banner/Banner.vue";
 import SecretFormula from "@/views/SecretFormula.vue";
 
 Vue.use(VueRouter);
@@ -27,6 +28,11 @@ const routes = [
     path: "/secret-formula",
     name: "SecretFormula",
     component: SecretFormula,
+  },
+  {
+    path: "/banner",
+    name: "Banner",
+    component: Banner,
   },
 ];
 

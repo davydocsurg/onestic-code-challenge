@@ -4,14 +4,15 @@
       <div class="banner__image" v-if="backgroundMedia.type === 'image'">
         <img
           class="banner__image-asset"
-          :src="backgroundMedia.src"
+          src="@/assets/media/pics.jpeg"
           :alt="text"
           :title="text"
         />
+        <!-- :src="backgroundMedia.src" -->
       </div>
       <div class="banner__video" v-if="backgroundMedia.type === 'video'">
-        <video class="banner__video-asset" autoplay muted>
-          <source :src="backgroundMedia.src" type="video/mp4" />
+        <video class="banner__video-asset" autoplay controls muted>
+          <source src="@/assets/media/vid.mp4" type="video/mp4" />
         </video>
       </div>
       <div class="banner__text" v-if="text">
@@ -30,8 +31,8 @@
       backgroundMedia: {
         type: Object,
         default: () => ({
-          type: null, // image/video
-          src: null,
+          type: "image", // image/video
+          src: "../../assets/media/pics.jpeg", //@/assets/media/vid.mp4
         }),
       },
       text: {

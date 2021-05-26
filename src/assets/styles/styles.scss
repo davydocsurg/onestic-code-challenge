@@ -14,7 +14,8 @@ html, body {
   display: flex;
   flex-direction: column;
   flex: 1 0 auto;
-  height: 100vh;
+  // height: 100vh;
+  height: auto;
 }
 
 .container {
@@ -29,21 +30,62 @@ html, body {
   width: 100%;
 }
 
-// .pages__stores-list{
-//   display: flex;
-//   flex-direction: row;
-//   align-content: space-around;
-//   flex-wrap: wrap;
-//   justify-content: center;
-
-//   & .storelist{
-//     width: 200px;
-
-//   }
-// }
-
 @media (min-width: 1200px) {
   .page {
     max-width: var(--boxed-max-width);
+  }
+}
+
+// theme toggler
+.theme-toggler-wrap{
+  width: 100%;
+  text-align: right;
+  .theme-toggler{
+    display: inline-block;
+    cursor: pointer;
+    .toggle-path{
+      width: 40px;
+      height: 20px;
+      border-radius: 10px;
+      background-color: rgb(247, 244, 244);
+      .toggle-handle{
+        background-color: #999;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        transition: all .3s ease-in-out;
+      }
+    }
+    &.active{
+      .toggle-path{
+        background-color: #555;
+      }
+      .toggle-handle{
+        transform: translate(20px);
+        background-color: #7bbb5e;
+      }
+    }
+  }
+}
+
+// theme switch action
+#app.dark-theme{
+  background-color: $bg-theme-dark;
+  color: $dark-theme-color;
+
+  .content-box{
+    background-color: #333;
+    h3,
+    h5{
+      color:#7bbb5e
+    }
+    p{
+      color: #ccc;
+    }
+  }
+  .links{
+    a{
+      color: #fff;
+    }
   }
 }

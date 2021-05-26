@@ -1,5 +1,5 @@
 <template>
-  <div class="recipe-form">
+  <div class="recipe-form my-5">
     <p>
       Introduce below the quantity for each ingredient you have and we will
       calculate how many Pasta Carbonara meals you can cook!
@@ -12,6 +12,7 @@
         name="eggs"
         id="recipe-eggs"
         value="0"
+        v-model="ingredients.eggs"
       />
       <label for="recipe-pasta">Pasta</label>
       <input
@@ -20,6 +21,7 @@
         name="pasta"
         id="recipe-pasta"
         value="0"
+        v-model="ingredients.pasta"
       />
       <label for="recipe-butter">Butter</label>
       <input
@@ -28,6 +30,7 @@
         name="butter"
         id="recipe-butter"
         value="0"
+        v-model="ingredients.butter"
       />
       <label for="recipe-milk">Milk</label>
       <input
@@ -36,6 +39,7 @@
         name="milk"
         id="recipe-milk"
         value="0"
+        v-model="ingredients.milk"
       />
       <label for="recipe-oil">Oil</label>
       <input
@@ -44,6 +48,7 @@
         name="oil"
         id="recipe-oil"
         value="0"
+        v-model="ingredients.oil"
       />
       <label for="recipe-bacon">Bacon</label>
       <input
@@ -52,6 +57,7 @@
         name="bacon"
         id="recipe-bacon"
         value="0"
+        v-model="ingredients.bacon"
       />
       <button type="submit" @click="calculate">Calculate</button>
     </form>
@@ -65,7 +71,7 @@
     name: "RecipeForm",
     data() {
       return {
-        meals: 0,
+        meals: "",
       };
     },
     props: {
@@ -77,9 +83,22 @@
     methods: {
       calculate(event) {
         event.preventDefault();
-        alert("2 Meals");
+        let mealCalc = [
+          (this.ingredients.bacon +
+            this.ingredients.eggs +
+            this.ingredients.pasta +
+            this.ingredients.oil +
+            this.ingredients.milk +
+            this.ingredients.butter) /
+            1584,
+        ];
+        this.meals = Math.round(mealCalc);
+        console.log(this.meals);
+        alert(this.meals + " meal(s)");
+        // this.$router.push({ path: "/banner" });
         this.$router.push({ path: "/secret-formula" });
       },
     },
   };
+  // 1584
 </script>

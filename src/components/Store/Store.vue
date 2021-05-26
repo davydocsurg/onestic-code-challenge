@@ -8,30 +8,33 @@
   </div>
 </template>
 <style lang="scss">
-@import './Store.scss';
+  @import "./Store.scss";
 </style>
 <script>
-
-export default {
-  name: 'Store',
-  props: {
-    title: {
-      type: String,
-      default: null
+  export default {
+    name: "Store",
+    props: {
+      title: {
+        type: String,
+        default: null,
+      },
+      location: {
+        type: String,
+        default: null,
+      },
+      photo: {
+        type: String,
+        default: null,
+      },
+      joke: {
+        type: String,
+        default: null,
+      },
     },
-    location: {
-      type: String,
-      default: null
+    computed: {
+      isVisible() {
+        return !!this.title && !!this.location;
+      },
     },
-    photo: {
-      type: String,
-      default: null
-    }
-  },
-  computed: {
-    isVisible () {
-      return !!this.title && !!this.location;
-    }
-  }
-}
+  };
 </script>

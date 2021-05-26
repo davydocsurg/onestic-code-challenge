@@ -1,7 +1,12 @@
 <template>
   <div>
-    <Banner />
-    Secret Formula Page
+    <!-- <Banner
+      :backgroundMedia="backgroundMedia"
+      :text="text"
+      :textDistribution="textDistribution"
+    /> -->
+    <!-- <h1 class="">Secret Formula Page</h1> -->
+    <Banner :text="text" />
   </div>
 </template>
 
@@ -11,6 +16,16 @@
   export default {
     components: {
       Banner,
+    },
+
+    data() {
+      return {
+        backgroundMedia: {
+          type: "image",
+          src: "../assets/media/pics.png",
+        },
+        text: "The Secret Formula",
+      };
     },
   };
 </script>
