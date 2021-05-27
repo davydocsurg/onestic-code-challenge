@@ -4,6 +4,9 @@
       Here you can find all of our restaurants. We have {{ storesCount }} stores
       right now!
     </p>
+    <button @click="fetchJokes" class="btn btn-sm btn-outline-info">
+      Joke
+    </button>
     <div class="form-group my-5">
       <label for="Filter Restaurants">Filter Restaurants</label>
       <input
